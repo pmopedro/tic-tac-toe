@@ -1,5 +1,8 @@
+import time
 import pygame
 from pygame.locals import *
+
+from explore.robot_player import RobotTicTacToePlayer
 
 pygame.init()
 pygame.font.init()
@@ -26,6 +29,8 @@ class TicTacToe():
         self.winner = None                  # Says who is the winner
         self.taking_move = True             # Is the game is still going?
         self.running = True                 # keep the game window open 
+
+        self.bot = RobotTicTacToePlayer()
 
         self.background_color = (255, 174, 66)
         self.table_color = (50, 50, 50)
@@ -71,7 +76,14 @@ class TicTacToe():
     def move(self, pos):
         try:
             x, y = pos[0] // self.cell_size, pos[1] // self.cell_size
+            print(x,y, self.table)
             if self.table[x][y] == "-":
+                self.table[x][y] = self.player
+                self.draw_char(x,y,self.player)
+                self.game_check()
+                self.change_player()
+                (x, y) = self.bot.make_move(self.table)
+                time.sleep(2)
                 self.table[x][y] = self.player
                 self.draw_char(x,y,self.player)
                 self.game_check()
