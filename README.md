@@ -13,7 +13,7 @@ To give it a try, follow these steps:
 
 A graphical window will open, allowing you to play the game against the AI bot.
 
-![game-example](/assets/game-example.png)
+![game-example](game-example.png)
 
 To see it working right away access the video on youtube: 
 
